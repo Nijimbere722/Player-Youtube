@@ -1,17 +1,12 @@
 import { useParams } from "react-router-dom";
-import ReactPlayer from "react-player";
+import VideoPlayer from "../components/VideoPlayer";
 
 function VideoCardDetails() {
   const { id } = useParams();
 
   return (
     <div>
-      <ReactPlayer
-        url={`https://www.youtube.com/watch?v=${id}`}
-        controls
-        width="100%"
-        height="500px"
-      />
+      <VideoPlayer videoId={id} />
     </div>
   );
 }
