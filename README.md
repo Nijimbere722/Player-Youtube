@@ -1,75 +1,110 @@
-# React + TypeScript + Vite
+# Advanced React Video Media Player
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+The Advanced React Video Media Player is a YouTube  web application built using React. The platform allows users to browse, search, and watch videos through a responsive interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The application dynamically retrieves video data from the YouTube v3 API via RapidAPI. The goal of this project is to demonstrate asynchronous API fetching, efficient state management, and modular component architecture while maintaining a clean and responsive user interface.
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Technologies Used
 
-Note: This will impact Vite dev & build performances.
+- React
+- React Router
+- Axios
+- TanStack Query (React Query)
+- RapidAPI YouTube v3 API
+- Vite
+- CSS / Tailwind CSS
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The project is organized using a modular structure that separates reusable components, pages, and API utilities.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The **components folder** contains reusable user interface elements used across the application. These include the navigation bar, sidebar, video cards, channel cards, video player, and loader component. These components help maintain consistency and make the interface easier to maintain and extend.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The **pages folder** contains the main views of the application. The Feed page acts as the landing page where users can browse videos based on selected categories. The VideoCardDetails page displays the selected video along with its details and related videos. The ChannelDetails page displays channel information and a list of videos uploaded by the creator.
+
+The **utilities folder** contains helper functions used across the application. The main utility file is responsible for communicating with the RapidAPI YouTube API using Axios. This file manages API configuration such as the base URL and authentication headers.
+
+The main application logic is handled in the root React files which manage routing, application layout, and component rendering.
+
+---
+
+## API Integration
+
+This project uses the **YouTube v3 API through RapidAPI** to retrieve video and channel data.
+
+Axios is used to make HTTP requests to the API, while **TanStack Query** is used to manage API requests, caching, loading states, and error handling. This approach improves performance and prevents unnecessary API calls when users navigate between pages.
+
+---
+
+## Running the Project Locally
+
+Follow the steps below to run the project on your local machine.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repository-name.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Navigate to the Project Folder
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd your-repository-name
 ```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Create Environment Variables
+
+Create a `.env` file in the root of the project and add your RapidAPI key.
+
+```
+VITE_RAPID_API_KEY=your_rapidapi_key_here
+```
+
+This key allows the application to access the YouTube API through RapidAPI.
+
+### 5. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 6. Open the Application
+
+Open your browser and visit:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Features
+
+- Browse videos by category
+- Search for videos using a search bar
+- Watch videos using an embedded video player
+- View channel information and uploaded videos
+- Display related videos
+- Responsive design for mobile, tablet, and desktop
+- Loading indicators during API requests
+- Error handling for API failures
+
+---
+
+## Conclusion
+
+This project demonstrates how modern React applications can interact with external APIs while maintaining clean architecture and efficient performance. By combining React, Axios, and TanStack Query, the application provides a dynamic and responsive video browsing experience similar to popular streaming platforms.
+## AUTHOR
+Monia Nijimbere
